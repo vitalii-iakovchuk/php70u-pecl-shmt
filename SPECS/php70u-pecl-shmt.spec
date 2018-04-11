@@ -104,7 +104,7 @@ popd
 %{__make} install INSTALL_ROOT=%{buildroot} -C NTS
 
 # Install XML package description
-install -Dpm 0644 package.xml %{buildroot}%{pecl_xmldir}/%{pecl_name}.xml
+#install -Dpm 0644 package.xml %{buildroot}%{pecl_xmldir}/%{pecl_name}.xml
 
 # Install config file
 install -Dpm 0644 %{SOURCE1} %{buildroot}%{php_inidir}/%{ini_name}
@@ -132,13 +132,13 @@ done
     --no-php-ini \
     --define extension_dir=%{buildroot}%{php_extdir} \
     --define extension=%{pecl_name}.so \
-    --modules | grep %{pecl_name}
+    --modules | grep -iw %{pecl_name}
 %if %{with_zts}
 %{__ztsphp} \
     --no-php-ini \
     --define extension_dir=%{buildroot}%{php_ztsextdir} \
     --define extension=%{pecl_name}.so \
-    --modules | grep %{pecl_name}
+    --modules | grep -iw %{pecl_name}
 %endif
 
 
@@ -159,9 +159,7 @@ fi
 
 
 %files
-%doc %{pecl_docdir}/%{pecl_name}
 %{php_extdir}/%{pecl_name}.so
-%{pecl_xmldir}/%{pecl_name}.xml
 %config(noreplace) %verify(not md5 mtime size) %{php_inidir}/%{ini_name}
 
 %if %{with_zts}
