@@ -1,5 +1,5 @@
 %global pecl_name shmt
-%global php_base php70u
+%global php_base php72u
 %global ini_name  40-%{pecl_name}.ini
 %global with_zts 0%{?__ztsphp:1}
 
@@ -27,11 +27,11 @@ Source0:      http://pecl.php.net/get/%{pecl_name}-%{version}.tgz
 %endif
 Source1: %{pecl_name}.ini
 URL: http://pecl.php.net/package/%{pecl_name}
-BuildRequires: %{php_base}-pear
+BuildRequires: pear1u
 BuildRequires: %{php_base}-devel
 %if 0%{?fedora} < 24
-Requires(post): %{php_base}-pear
-Requires(postun): %{php_base}-pear
+Requires(post): pear1u
+Requires(postun): pear1u
 %endif
 Requires: php(zend-abi) = %{php_zend_api}
 Requires: php(api) = %{php_core_api}
