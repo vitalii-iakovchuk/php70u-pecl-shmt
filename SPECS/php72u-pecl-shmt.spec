@@ -3,7 +3,7 @@
 %global ini_name  40-%{pecl_name}.ini
 %global with_zts 0%{?__ztsphp:1}
 
-%global gh_commit   fb1aa69ccae3905cdb19d359f9fca121eb5a0edc
+%global gh_commit   67cc059e8f46faebd766ddeb6141f829041abab6
 %global gh_short    %(c=%{gh_commit}; echo ${c:0:7})
 %global gh_owner    sevenval
 %global gh_project  SHMT
